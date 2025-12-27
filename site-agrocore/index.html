@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCore - Gestão Rural Inteligente</title>
+
+    <!-- Tailwind CSS (Versão CDN Estável) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos Globais */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Utilitários */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Animações */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 antialiased selection:bg-green-100 selection:text-green-900">
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <a href="#" class="flex items-center">
+                    <!-- Logo Navbar (Aparece ao rolar) -->
+                    <img src="imagem_2025-11-28_134640606 (2) (1).png" alt="AgroCore Logo" id="nav-logo"
+                        class="h-10 w-auto object-contain transition-transform hover:scale-105 opacity-0 transition-opacity duration-300"
+                        onerror="this.style.display='none';" />
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#fazen"
+                    class="font-medium text-sm text-gray-100 hover:text-green-500 transition-colors nav-link">FaZen</a>
+                <a href="#lucia"
+                    class="font-medium text-sm text-gray-100 hover:text-green-500 transition-colors nav-link">LucIA</a>
+                <a href="#funcionalidades"
+                    class="font-medium text-sm text-gray-100 hover:text-green-500 transition-colors nav-link">Funcionalidades</a>
+                <a href="#planos"
+                    class="font-medium text-sm text-gray-100 hover:text-green-500 transition-colors nav-link">Planos</a>
+                <a href="#equipe"
+                    class="font-medium text-sm text-gray-100 hover:text-green-500 transition-colors nav-link">Equipe</a>
+                <a href="#contato"
+                    class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full font-semibold text-sm transition-transform hover:scale-105 shadow-md border border-green-500">
+                    Fale Conosco
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="mobile-menu-btn"
+                class="md:hidden text-white focus:outline-none p-2 rounded-md hover:bg-white/10 transition-colors">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-full left-0 w-full bg-white shadow-xl py-4 flex flex-col items-center gap-4 border-t border-gray-100">
+            <a href="#fazen"
+                class="text-gray-800 font-medium text-lg mobile-link hover:text-green-600 w-full text-center py-2">FaZen</a>
+            <a href="#lucia"
+                class="text-gray-800 font-medium text-lg mobile-link hover:text-green-600 w-full text-center py-2">LucIA</a>
+            <a href="#funcionalidades"
+                class="text-gray-800 font-medium text-lg mobile-link hover:text-green-600 w-full text-center py-2">Funcionalidades</a>
+            <a href="#planos"
+                class="text-gray-800 font-medium text-lg mobile-link hover:text-green-600 w-full text-center py-2">Planos</a>
+            <a href="#equipe"
+                class="text-gray-800 font-medium text-lg mobile-link hover:text-green-600 w-full text-center py-2">Equipe</a>
+            <a href="#contato"
+                class="text-gray-800 font-medium text-lg mobile-link hover:text-green-600 w-full text-center py-2">Contato</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative w-full h-screen flex items-center overflow-hidden bg-gray-900">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070&auto=format&fit=crop"
+                alt="Plantação de soja" class="w-full h-full object-cover opacity-60" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-gray-900/95"></div>
+        </div>
+
+        <div class="container mx-auto px-4 z-10 h-full flex flex-col justify-center items-start pt-16 md:pt-24">
+
+            <!-- Logo Principal (Fixa no conteúdo, rola com a página) -->
+            <div
+                class="mb-6 fade-in-up bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 inline-block shadow-2xl hover:bg-white/20 transition-colors cursor-default">
+                <img src="imagem_2025-11-28_134640606 (2) (1).png" alt="AgroCore Logo"
+                    class="h-12 md:h-16 w-auto object-contain"
+                    onerror="this.src='https://placehold.co/200x80/transparent/white?text=LOGO+AQUI'" />
+            </div>
+
+            <!-- Título Principal -->
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight max-w-4xl mb-4 drop-shadow-lg fade-in-up text-left tracking-tight"
+                style="animation-delay: 0.1s;">
+                Sua fazenda na palma da mão. <br /><span class="text-green-400">Sem complicação.</span>
+            </h1>
+
+            <!-- Subtítulo -->
+            <p class="text-base md:text-lg text-gray-200 max-w-2xl mb-8 font-light fade-in-up leading-relaxed text-left opacity-90"
+                style="animation-delay: 0.2s;">
+                Apresentamos a <strong>FaZen</strong>: elimine o "achismo" e tome decisões lucrativas usando apenas o
+                WhatsApp.
+            </p>
+
+            <!-- Botões de Ação -->
+            <div class="flex flex-col sm:flex-row gap-4 fade-in-up w-full sm:w-auto" style="animation-delay: 0.4s;">
+                <a href="#lucia"
+                    class="bg-green-600 hover:bg-green-700 text-white px-8 py-3.5 rounded-lg font-bold text-base transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-green-500/30 hover:-translate-y-1 w-full sm:w-auto group">
+                    <i data-lucide="message-circle" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                    Conhecer a LucIA
+                </a>
+                <a href="#fazen"
+                    class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-3.5 rounded-lg font-bold text-base transition-all flex items-center justify-center gap-2 hover:-translate-y-1 w-full sm:w-auto group">
+                    Entender a Plataforma <i data-lucide="arrow-right"
+                        class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- FAZEN SECTION -->
+    <section id="fazen" class="py-20 bg-white">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 w-full">
+                <!-- Mockup Imagem com Logo -->
+                <div
+                    class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-100 group bg-gray-50 h-80 flex items-center justify-center w-full">
+                    <img src="imagem_2025-11-28_134640606 (2) (1).png" alt="AgroCore Logo Grande"
+                        class="w-2/3 h-auto object-contain transform transition-transform duration-700 group-hover:scale-105"
+                        onerror="this.src='https://placehold.co/400x150/white/green?text=Logo+AgroCore'" />
+                    <div class="absolute bottom-6 left-0 w-full text-center">
+                        <p
+                            class="text-gray-800 font-bold text-sm bg-white/90 py-2 px-5 inline-block rounded-full shadow-md border border-gray-200">
+                            Gestão onde o produtor já está.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 w-full space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
+                    O que é a <span class="text-green-600">FaZen</span>?
+                </h2>
+                <p class="text-gray-600 text-base leading-relaxed">
+                    A FaZen não é apenas mais um software complicado. É uma plataforma completa de gestão estratégica
+                    desenhada especificamente para o pequeno e médio produtor rural.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 group">
+                        <div
+                            class="bg-green-100 p-2 rounded-lg text-green-600 mt-1 shrink-0 group-hover:bg-green-200 transition-colors">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm">Do Operacional ao Estratégico</h4>
+                            <p class="text-gray-500 text-xs mt-1">Saia de apenas "anotar gastos" para receber análises
+                                de lucro real.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 group">
+                        <div
+                            class="bg-green-100 p-2 rounded-lg text-green-600 mt-1 shrink-0 group-hover:bg-green-200 transition-colors">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm">Segurança Total</h4>
+                            <p class="text-gray-500 text-xs mt-1">Seus dados protegidos na nuvem, acessíveis a qualquer
+                                hora.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 group">
+                        <div
+                            class="bg-green-100 p-2 rounded-lg text-green-600 mt-1 shrink-0 group-hover:bg-green-200 transition-colors">
+                            <i data-lucide="sprout" class="w-5 h-5"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm">Foco no Agronegócio</h4>
+                            <p class="text-gray-500 text-xs mt-1">Feito por quem entende de safra, gado e cotações.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- LUCIA SECTION -->
+    <section id="lucia" class="py-24 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2 w-full space-y-6 order-2 md:order-1">
+                    <div
+                        class="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                        Inteligência Artificial
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
+                        Conheça a <span class="text-green-600">LucIA</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 font-medium">
+                        Zero curva de aprendizado. Se você sabe enviar um áudio no WhatsApp, você sabe gerenciar sua
+                        fazenda.
+                    </p>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        A LucIA é nossa assistente virtual inteligente. Ela interpreta textos, áudios e até fotos de
+                        notas fiscais. Ela não apenas registra os dados, mas conversa com você, tira dúvidas sobre
+                        cotações e alerta sobre o clima.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div
+                            class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-green-300 transition-all hover:-translate-y-1">
+                            <i data-lucide="mic" class="text-green-600 mb-2 w-6 h-6"></i>
+                            <h4 class="font-bold text-gray-800 text-sm">Áudio para Texto</h4>
+                            <p class="text-xs text-gray-500 mt-1">Fale o que gastou, ela anota e categoriza.</p>
+                        </div>
+                        <div
+                            class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-green-300 transition-all hover:-translate-y-1">
+                            <i data-lucide="camera" class="text-green-600 mb-2 w-6 h-6"></i>
+                            <h4 class="font-bold text-gray-800 text-sm">Leitura de Notas</h4>
+                            <p class="text-xs text-gray-500 mt-1">Foto do recibo vira lançamento no caixa.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 w-full flex justify-center perspective-1000 order-1 md:order-2">
+                    <div
+                        class="w-[320px] bg-white rounded-[2.5rem] shadow-2xl border-[8px] border-gray-800 overflow-hidden relative transform hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-gray-800 rounded-b-xl z-20">
+                        </div>
+
+                        <div class="bg-[#075E54] p-3 pt-8 text-white flex items-center gap-3 shadow-md z-10 relative">
+                            <div
+                                class="w-8 h-8 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-white/50">
+                                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=LucIA&backgroundColor=transparent"
+                                    alt="LucIA Avatar" />
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm">LucIA - AgroCore</p>
+                                <p class="text-[10px] text-green-100 flex items-center gap-1"><span
+                                        class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> Online agora
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-[#e5ddd5] h-[420px] p-3 flex flex-col gap-3 overflow-y-auto text-xs scrollbar-hide pb-20">
+                            <div class="self-end bg-[#dcf8c6] p-2.5 rounded-lg shadow-sm max-w-[85%] rounded-tr-none">
+                                <p>Vendi 10 sacas de soja por R$ 125,00 cada.</p>
+                                <span class="text-[9px] text-gray-500 block text-right mt-1">13:42</span>
+                            </div>
+
+                            <div
+                                class="self-start bg-white p-2.5 rounded-lg shadow-sm max-w-[90%] border-l-4 border-green-500 rounded-tl-none">
+                                <p class="font-bold text-green-800 text-[10px] mb-1">LucIA</p>
+                                <p class="mb-1">💰 <strong>Venda Registrada!</strong></p>
+                                <div
+                                    class="bg-gray-50 p-1.5 rounded text-[10px] text-gray-600 mb-1 border border-gray-100">
+                                    <p>Total: <strong>R$ 1.250,00</strong></p>
+                                    <p>Categoria: Receita/Vendas</p>
+                                </div>
+                                <span class="text-[9px] text-gray-500 block text-right">13:42</span>
+                            </div>
+
+                            <div
+                                class="self-end bg-[#dcf8c6] p-2.5 rounded-lg shadow-sm max-w-[85%] flex items-center gap-2 rounded-tr-none">
+                                <i data-lucide="mic" class="w-3 h-3 text-gray-500"></i>
+                                <span>(Áudio 0:15s) Vai chover amanhã?</span>
+                                <span class="text-[9px] text-gray-500 block text-right mt-1">13:43</span>
+                            </div>
+
+                            <div
+                                class="self-start bg-white p-2.5 rounded-lg shadow-sm max-w-[90%] border-l-4 border-blue-500 rounded-tl-none">
+                                <p class="font-bold text-blue-800 text-[10px] mb-1">LucIA</p>
+                                <p>⛈️ <strong>Alerta Climático</strong></p>
+                                <p class="mb-1">Sim! Previsão de chuva forte (25mm) nas próximas 24h.</p>
+                                <p class="text-[9px] text-gray-500 italic mt-1">Sugestão: Adie a pulverização.</p>
+                                <span class="text-[9px] text-gray-500 block text-right mt-1">13:43</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute bottom-0 w-full bg-[#f0f2f5] p-2 flex items-center justify-between text-gray-500 border-t border-gray-200">
+                            <div class="flex gap-2">
+                                <span class="p-2 hover:bg-gray-200 rounded-full cursor-pointer transition-colors"><i
+                                        data-lucide="camera" class="w-5 h-5 text-gray-500"></i></span>
+                                <span class="p-2 hover:bg-gray-200 rounded-full cursor-pointer transition-colors"><i
+                                        data-lucide="mic" class="w-5 h-5 text-gray-500"></i></span>
+                            </div>
+                            <div
+                                class="bg-white flex-1 mx-2 rounded-full h-9 px-3 flex items-center text-xs shadow-sm text-gray-400 border border-gray-100">
+                                Mensagem...</div>
+                            <div
+                                class="p-2 bg-green-600 text-white rounded-full shadow-md cursor-pointer hover:bg-green-700 transition-colors">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTICS -->
+    <section class="py-16 bg-green-700 text-white relative overflow-hidden">
+        <!-- Pattern Overlay -->
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative z-10">
+            <div>
+                <h3 class="text-4xl font-extrabold mb-1">96%</h3>
+                <p class="text-green-100 text-sm font-medium">dos produtores já usam WhatsApp</p>
+            </div>
+            <div>
+                <h3 class="text-4xl font-extrabold mb-1">-15%</h3>
+                <p class="text-green-100 text-sm font-medium">de desperdício com gestão eficiente</p>
+            </div>
+            <div>
+                <h3 class="text-4xl font-extrabold mb-1">100%</h3>
+                <p class="text-green-100 text-sm font-medium">focado no pequeno e médio produtor</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="funcionalidades" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Funcionalidades Poderosas</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+                    Tecnologia de ponta simplificada para o dia a dia do campo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Feature Items -->
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border-t-4 border-green-600 group">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-green-50 transition-colors shadow-sm">
+                        <i data-lucide="smartphone" class="text-green-600 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Simplicidade Radical</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Interface familiar do WhatsApp. Sem telas complexas
+                        ou logins difíceis.</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border-t-4 border-green-600 group">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-green-50 transition-colors shadow-sm">
+                        <i data-lucide="trending-up" class="text-green-600 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Gestão Estratégica</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Saia do escuro. Saiba exatamente onde está seu
+                        lucro e onde cortar custos.</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border-t-4 border-green-600 group">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-green-50 transition-colors shadow-sm">
+                        <i data-lucide="mic" class="text-green-600 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Comandos de Voz</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Ideal para o campo. Fale com a LucIA enquanto
+                        trabalha no trator.</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border-t-4 border-green-600 group">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-green-50 transition-colors shadow-sm">
+                        <i data-lucide="camera" class="text-green-600 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">OCR Inteligente</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Digitalize notas fiscais instantaneamente apenas
+                        tirando uma foto.</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border-t-4 border-green-600 group">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-green-50 transition-colors shadow-sm">
+                        <i data-lucide="cloud-rain" class="text-green-600 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Alertas Proativos</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Avisos sobre clima severo e oportunidades de
+                        mercado em tempo real.</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border-t-4 border-green-600 group">
+                    <div
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 group-hover:bg-green-50 transition-colors shadow-sm">
+                        <i data-lucide="bar-chart-3" class="text-green-600 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Relatórios Automáticos</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Receba PDFs mensais com seu fluxo de caixa
+                        detalhado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="planos" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Investimento que dá retorno</h2>
+                <p class="text-gray-600 text-sm">Escolha o plano ideal para o tamanho da sua produção.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8 max-w-5xl mx-auto">
+                <div
+                    class="w-full md:w-1/3 bg-white rounded-2xl p-8 border border-gray-200 hover:border-green-300 transition-all shadow-sm">
+                    <h3 class="text-2xl font-bold text-gray-800">Básico</h3>
+                    <p class="text-gray-500 mt-1 text-sm">Gestão essencial.</p>
+                    <div class="my-6">
+                        <span class="text-4xl font-extrabold text-gray-800">R$ 24,90</span>
+                        <span class="text-gray-500 text-sm">/mês</span>
+                        <p class="text-xs text-green-600 font-semibold mt-1">R$ 239,90 anual (-20%)</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm">
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> Registro via WhatsApp</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> Fluxo de Caixa Automático</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> Relatórios Mensais (PDF)</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> Suporte básico</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-lg font-bold border-2 border-green-600 text-green-600 hover:bg-green-50 transition-colors text-sm">
+                        Começar Agora
+                    </button>
+                </div>
+
+                <div
+                    class="w-full md:w-1/3 bg-white rounded-2xl p-8 border-2 border-green-600 shadow-2xl transform md:-translate-y-4 relative">
+                    <div
+                        class="absolute top-0 right-0 bg-green-600 text-white text-[10px] font-bold px-4 py-1.5 rounded-bl-lg rounded-tr-lg">
+                        RECOMENDADO
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Premium</h3>
+                    <p class="text-gray-500 mt-1 text-sm">Gestão estratégica completa.</p>
+                    <div class="my-6">
+                        <span class="text-4xl font-extrabold text-gray-800">R$ 49,90</span>
+                        <span class="text-gray-500 text-sm">/mês</span>
+                        <p class="text-xs text-green-600 font-semibold mt-1">R$ 479,90 anual (-20%)</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm">
+                        <li class="flex items-center gap-3 text-gray-700 font-semibold"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> Tudo do plano Básico</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> <strong class="text-green-700 ml-1">LucIA
+                                Proativa:</strong> Recomendações</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> Alertas Climáticos Localizados</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> Cotações em Tempo Real</li>
+                        <li class="flex items-center gap-3 text-gray-700"><i data-lucide="check"
+                                class="text-green-500 w-5 h-5 shrink-0"></i> Previsão de Safra</li>
+                    </ul>
+                    <button
+                        class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-bold transition-colors shadow-lg hover:shadow-green-500/40 text-sm">
+                        Assinar Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="equipe" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Quem faz a <span
+                        class="text-green-600">AgroCore</span></h2>
+                <p class="text-gray-600 text-sm">Unimos a tecnologia de ponta com a vivência do campo.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md text-center w-60 hover:-translate-y-2 transition-transform border border-gray-100 group">
+                    <div
+                        class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-md relative">
+                        <img src="joao.jpg" alt="João Guidi"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800">João Guidi</h3>
+                    <p class="text-green-600 text-xs font-medium">Gestão & Estratégia</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md text-center w-60 hover:-translate-y-2 transition-transform border border-gray-100 group">
+                    <div
+                        class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-md relative">
+                        <img src="athos.jpg" alt="Athos Duarte"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800">Athos Duarte</h3>
+                    <p class="text-green-600 text-xs font-medium">Inteligência Artificial</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md text-center w-60 hover:-translate-y-2 transition-transform border border-gray-100 group">
+                    <div
+                        class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-md relative">
+                        <img src="amadeus.jpg" alt="Amadeus Ferro"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800">Amadeus Ferro</h3>
+                    <p class="text-green-600 text-xs font-medium">IoT & Infraestrutura</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md text-center w-60 hover:-translate-y-2 transition-transform border border-gray-100 group">
+                    <div
+                        class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-md relative">
+                        <img src="vitor.jpg" alt="Vítor Fortes"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800">Vítor Fortes</h3>
+                    <p class="text-green-600 text-xs font-medium">Ciência da Computação</p>
+                </div>
+
+                <div
+                    class="bg-gray-50 p-6 rounded-xl shadow-md text-center w-60 hover:-translate-y-2 transition-transform border border-gray-100 group">
+                    <div
+                        class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-md relative">
+                        <img src="lucas.jpg" alt="Lucas Lima"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-800">Lucas Lima</h3>
+                    <p class="text-green-600 text-xs font-medium">Agronomia & Pecuária</p>
+                </div>
+            </div>
+
+            <div class="mt-20 pt-10 border-t border-gray-200">
+                <h3 class="text-center text-gray-400 font-semibold uppercase tracking-widest mb-8 text-xs">Parceiros e
+                    Apoio</h3>
+                <div
+                    class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="text-xl font-bold text-gray-700 cursor-default hover:text-green-700 transition-colors">SEBRAE</span>
+                    <span
+                        class="text-xl font-bold text-gray-700 cursor-default hover:text-green-700 transition-colors">EMBRAPA</span>
+                    <span
+                        class="text-xl font-bold text-gray-700 cursor-default hover:text-green-700 transition-colors">SENAR</span>
+                    <span
+                        class="text-xl font-bold text-gray-700 cursor-default hover:text-blue-500 transition-colors">Google</span>
+                    <span
+                        class="text-xl font-bold text-gray-700 cursor-default hover:text-orange-500 transition-colors">AWS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato" class="bg-gray-900 text-white pt-16 pb-8 border-t border-green-900">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="imagem_2025-11-28_134640606 (2) (1).png" alt="AgroCore Logo"
+                            class="h-10 w-auto object-contain"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                        <span class="text-2xl font-bold text-green-500 hidden">AgroCore</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        Não deixaremos o produtor no escuro. Vamos plantar esse futuro juntos?
+                    </p>
+                    <div class="flex gap-4">
+                        <!-- LINK DO LINKEDIN -->
+                        <a href="https://www.linkedin.com/company/4grocore" target="_blank" rel="noopener noreferrer"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                            title="LinkedIn">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <!-- LINK GENÉRICO REDES -->
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
+                            title="Redes Sociais">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-base font-bold mb-4 border-b border-green-700 inline-block pb-1">Contato</h4>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="smartphone" class="text-green-500 mt-0.5 w-5 h-5"></i>
+                            <span>(64) 99909-5016</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="message-circle" class="text-green-500 mt-0.5 w-5 h-5"></i>
+                            <span>4groCore@gmail.com</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="sprout" class="text-green-500 mt-0.5 w-5 h-5"></i>
+                            <span>Rodovia GO 507, km 4, Zona Rural</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-base font-bold mb-4 border-b border-green-700 inline-block pb-1">Menu</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#fazen" class="hover:text-green-400 transition-colors">A FaZen</a></li>
+                        <li><a href="#lucia" class="hover:text-green-400 transition-colors">A LucIA</a></li>
+                        <li><a href="#funcionalidades"
+                                class="hover:text-green-400 transition-colors">Funcionalidades</a></li>
+                        <li><a href="#planos" class="hover:text-green-400 transition-colors">Planos</a></li>
+                        <li><a href="#equipe" class="hover:text-green-400 transition-colors">Sobre Nós</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs">
+                <p>&copy; 2024 AgroCore Soluções Digitais Ltda. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Inicializa os ícones Lucide
+        lucide.createIcons();
+
+        // Navbar Scroll Logic
+        const navbar = document.getElementById('navbar');
+        const logo = document.getElementById('nav-logo');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-white', 'shadow-md', 'py-2');
+                navbar.classList.remove('bg-transparent', 'py-4');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-gray-100');
+                    link.classList.add('text-gray-600');
+                });
+
+                if (logo) {
+                    logo.classList.remove('opacity-0');
+                    logo.classList.add('opacity-100');
+                }
+
+                mobileBtn.classList.remove('text-white');
+                mobileBtn.classList.add('text-gray-800');
+
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md', 'py-2');
+                navbar.classList.add('bg-transparent', 'py-4');
+
+                navLinks.forEach(link => {
+                    link.classList.add('text-gray-100');
+                    link.classList.remove('text-gray-600');
+                });
+
+                if (logo) {
+                    logo.classList.remove('opacity-100');
+                    logo.classList.add('opacity-0');
+                }
+
+                mobileBtn.classList.add('text-white');
+                mobileBtn.classList.remove('text-gray-800');
+            }
+        });
+
+        // Mobile Menu Toggle
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
